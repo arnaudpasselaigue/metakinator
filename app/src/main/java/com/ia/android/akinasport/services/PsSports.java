@@ -34,7 +34,7 @@ public class PsSports extends PsAuthentification
                 Log.d("getAllEntities()", response.toString());
                 try
                 {
-                    GlobalVariables.getsInstance().setListSports(sportsFromJSON(response));
+                    sportsFromJSON(response);
                 }
                 catch (JSONException e)
                 {
@@ -50,10 +50,8 @@ public class PsSports extends PsAuthentification
         GlobalVariables.getsInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    public ArrayList<Sport> sportsFromJSON(JSONArray response) throws JSONException
+    public void sportsFromJSON(JSONArray response) throws JSONException
     {
-        ArrayList<Sport> listSport = new ArrayList<>();
-
         for (int i = 0; i < response.length(); i++)
         {
             JSONObject o = response.getJSONObject(i);
@@ -63,9 +61,8 @@ public class PsSports extends PsAuthentification
             JSONArray array = o.getJSONArray("answers");
             sport.setAnswers(answersFromJSON(array));
 
-            listSport.add(sport);
+            GlobalVariables.getsInstance().getModelManager().putSport(sport);
         }
-        return listSport;
     }
 
     public ArrayList<Integer> answersFromJSON(JSONArray array) throws JSONException

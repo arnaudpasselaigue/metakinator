@@ -30,7 +30,7 @@ public class PsQuestions extends PsAuthentification
                 Log.d("getAllQuestions()", response.toString());
                 try
                 {
-                    GlobalVariables.getsInstance().setListQuestions(questionsFromJSON(response));
+                    questionsFromJSON(response);
                 }
                 catch (JSONException e)
                 {
@@ -46,7 +46,7 @@ public class PsQuestions extends PsAuthentification
         GlobalVariables.getsInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    public ArrayList<Question> questionsFromJSON(JSONArray response) throws JSONException
+    public void questionsFromJSON(JSONArray response) throws JSONException
     {
         ArrayList<Question> listQuestions = new ArrayList<>();
 
@@ -57,9 +57,7 @@ public class PsQuestions extends PsAuthentification
             question.setId(o.getInt("id"));
             question.setTitle(o.getString("title"));
 
-            listQuestions.add(question);
+            GlobalVariables.getsInstance().getModelManager().putQuestion(question);
         }
-
-        return listQuestions;
     }
 }

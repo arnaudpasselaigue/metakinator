@@ -13,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Arnaud on 31/03/2016.
@@ -30,7 +32,7 @@ public class PsAnswers extends PsAuthentification
                 Log.d("getAllAnswers()", response.toString());
                 try
                 {
-                    GlobalVariables.getsInstance().setListAnswers(answersFromJSON(response));
+                    answersFromJSON(response);
                 }
                 catch (JSONException e)
                 {
@@ -46,11 +48,9 @@ public class PsAnswers extends PsAuthentification
         GlobalVariables.getsInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    public ArrayList<Answer> answersFromJSON(JSONArray array) throws JSONException
+    public void answersFromJSON(JSONArray array) throws JSONException
     {
-        ArrayList<Answer> answers = new ArrayList<>();
-
-        for (int i = 0; i < array.length(); i++)
+        for (int i = 0; i < array.length(); ++i)
         {
             JSONObject o = array.getJSONObject(i);
             Answer answer = new Answer();
@@ -64,8 +64,7 @@ public class PsAnswers extends PsAuthentification
             else
                 answer.setResponse(false);
 
-            answers.add(answer);
+            GlobalVariables.getsInstance().getModelManager().putAnswer(answer);
         }
-        return answers;
     }
 }
