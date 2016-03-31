@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ia.android.akinasport">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name="com.ia.android.akinasport.utils.GlobalVariables"
         android:allowBackup="true"
         android:icon="@drawable/ic_loader"
         android:label="@string/app_name"

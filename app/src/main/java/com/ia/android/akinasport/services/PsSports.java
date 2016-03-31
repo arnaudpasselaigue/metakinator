@@ -9,10 +9,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.ia.android.akinasport.models.Sport;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by Arnaud on 31/03/2016.
@@ -35,5 +38,13 @@ public class PsSports extends PsAuthentification
             }
         });
         GlobalVariables.getsInstance().getRequestQueue().add(jsonArrayRequest);
+    }
+
+    public ArrayList<Sport> jsonToSport(JSONArray response)
+    {
+        ArrayList<Sport> listSport = new ArrayList<>();
+
+        
+        return listSport;
     }
 }

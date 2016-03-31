@@ -33,10 +33,14 @@ public class GlobalVariables extends Application
     public void init()
     {
         GlobalVariables.setsInstance(this);
-        this.requestQueue = Volley.newRequestQueue(getApplicationContext());
     }
 
-    public RequestQueue getRequestQueue() {return requestQueue;}
+    public RequestQueue getRequestQueue()
+    {
+        if (requestQueue == null)
+            this.requestQueue = Volley.newRequestQueue(getApplicationContext());
+        return requestQueue;
+    }
     public void setRequestQueue(RequestQueue requestQueue) {this.requestQueue = requestQueue;}
 
     public boolean isFirstConnexion() {return isFirstConnexion;}
@@ -48,6 +52,11 @@ public class GlobalVariables extends Application
     public ArrayList<Sport> getListSports() {return listSports;}
     public void setListSports(ArrayList<Sport> listSports) {this.listSports = listSports;}
 
-    public static GlobalVariables getsInstance() {return sInstance;}
+    public static GlobalVariables getsInstance()
+    {
+        if (sInstance == null)
+            sInstance = new GlobalVariables();
+        return sInstance;
+    }
     public static void setsInstance(GlobalVariables sInstance) {GlobalVariables.sInstance = sInstance;}
 }
