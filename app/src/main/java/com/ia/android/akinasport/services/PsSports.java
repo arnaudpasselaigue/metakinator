@@ -54,7 +54,7 @@ public class PsSports extends PsAuthentification
     {
         ArrayList<Sport> listSport = new ArrayList<>();
 
-        for (int i = 0; response.getJSONObject(i) != null; i++)
+        for (int i = 0; i < response.length(); i++)
         {
             JSONObject o = response.getJSONObject(i);
             Sport sport = new Sport();
@@ -62,6 +62,8 @@ public class PsSports extends PsAuthentification
             sport.setName(o.getString("name"));
             JSONArray array = o.getJSONArray("answers");
             sport.setAnswers(answersFromJSON(array));
+
+            listSport.add(sport);
         }
         return listSport;
     }
@@ -70,10 +72,11 @@ public class PsSports extends PsAuthentification
     {
         ArrayList<Integer> answers = new ArrayList<>();
 
-        for (int i = 0; array.get(i) != null; i++)
+        for (int i = 0; i < array.length(); i++)
         {
             answers.add(array.getInt(i));
         }
+
         return answers;
     }
 }
