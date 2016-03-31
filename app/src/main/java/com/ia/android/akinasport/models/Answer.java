@@ -6,30 +6,19 @@ package com.ia.android.akinasport.models;
 public class Answer
 {
     private int id;
-    private int answerCode;
-    private int id_question;
+    private int sport_id;
+    private int questions_id;
+    private boolean response;
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public int getSport_id() {return sport_id;}
+    public void setSport_id(int sport_id) {this.sport_id = sport_id;}
 
-    public int getAnswerCode() {
-        return answerCode;
-    }
+    public int getQuestions_id() {return questions_id;}
+    public void setQuestions_id(int questions_id) {this.questions_id = questions_id;}
 
-    public void setAnswerCode(int answerCode) {
-        this.answerCode = answerCode;
-    }
-
-    public int getId_question() {
-        return id_question;
-    }
-
-    public void setId_question(int id_question) {
-        this.id_question = id_question;
-    }
+    public boolean isResponse() {return response;}
+    public void setResponse(boolean response) {this.response = response;}
 }

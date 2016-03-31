@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.ia.android.akinasport.models.Answer;
 import com.ia.android.akinasport.models.Question;
 import com.ia.android.akinasport.models.Sport;
 
@@ -21,6 +22,7 @@ public class GlobalVariables extends Application
 
     private ArrayList<Sport> listSports = new ArrayList<>();
     private ArrayList<Question> listQuestions = new ArrayList<>();
+    private ArrayList<Answer> listAnswers = new ArrayList<>();
 
     private static GlobalVariables sInstance;
 
@@ -64,4 +66,7 @@ public class GlobalVariables extends Application
 
     public ArrayList<Question> getListQuestions() {return listQuestions;}
     public void setListQuestions(ArrayList<Question> listQuestions) {this.listQuestions = listQuestions;}
+
+    public ArrayList<Answer> getListAnswers() {return listAnswers;}
+    public void setListAnswers(ArrayList<Answer> listAnswers) {this.listAnswers = listAnswers;}
 }
