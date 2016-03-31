@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AkinaSport.iml" filepath="$PROJECT_DIR$/AkinaSport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/akinasport.iml" filepath="$PROJECT_DIR$/akinasport.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
