@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_loader"
+            android:src="@drawable/ic_genius"
             android:id="@+id/imageViewIconLoader"/>
 
         <com.ia.android.akinasport.customviews.AkinasportTextView
@@ -23,7 +23,7 @@
             android:id="@+id/textViewNameLoader"
             android:layout_below="@+id/imageViewIconLoader"
             android:layout_centerHorizontal="true"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:layout_marginTop="10dp" />
     </RelativeLayout>
 </RelativeLayout>
