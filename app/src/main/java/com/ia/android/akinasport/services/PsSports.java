@@ -13,6 +13,7 @@ import com.ia.android.akinasport.models.Sport;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -28,8 +29,17 @@ public class PsSports extends PsAuthentification
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(requestUri, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(JSONArray response) {
-                    Log.d("getAllEntities()", response.toString());
+            public void onResponse(JSONArray response)
+            {
+                Log.d("getAllEntities()", response.toString());
+                try
+                {
+                    GlobalVariables.getsInstance().setListSports(sportsFromJSON(response));
+                }
+                catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -40,11 +50,30 @@ public class PsSports extends PsAuthentification
         GlobalVariables.getsInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    public ArrayList<Sport> jsonToSport(JSONArray response)
+    public ArrayList<Sport> sportsFromJSON(JSONArray response) throws JSONException
     {
         ArrayList<Sport> listSport = new ArrayList<>();
 
-        
+        for (int i = 0; response.getJSONObject(i) != null; i++)
+        {
+            JSONObject o = response.getJSONObject(i);
+            Sport sport = new Sport();
+            sport.setId(o.getInt("id"));
+            sport.setName(o.getString("name"));
+            JSONArray array = o.getJSONArray("answers");
+            sport.setAnswers(answersFromJSON(array));
+        }
         return listSport;
+    }
+
+    public ArrayList<Integer> answersFromJSON(JSONArray array) throws JSONException
+    {
+        ArrayList<Integer> answers = new ArrayList<>();
+
+        for (int i = 0; array.get(i) != null; i++)
+        {
+            answers.add(array.getInt(i));
+        }
+        return answers;
     }
 }

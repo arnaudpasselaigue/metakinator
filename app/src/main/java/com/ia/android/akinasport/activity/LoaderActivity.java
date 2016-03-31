@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.ia.android.akinasport.R;
+import com.ia.android.akinasport.services.PsAnswers;
+import com.ia.android.akinasport.services.PsQuestions;
 import com.ia.android.akinasport.services.PsSports;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
@@ -24,8 +26,16 @@ public class LoaderActivity extends ParentActivity
 
     public void init()
     {
+        //Loading Sports
         PsSports psSports = new PsSports();
-
         psSports.getAllEntities();
+
+        //Loading Questions
+        PsQuestions psQuestions = new PsQuestions();
+        psQuestions.getAllQuestions();
+
+        //Loading Answers
+        PsAnswers psAnswers = new PsAnswers();
+        psAnswers.getAllAnswers();
     }
 }

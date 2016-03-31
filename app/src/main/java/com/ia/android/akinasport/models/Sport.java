@@ -2,6 +2,7 @@ package com.ia.android.akinasport.models;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by Arnaud on 17/03/2016.
@@ -10,29 +11,20 @@ public class Sport
 {
     private int id;
     private String name;
-    private ArrayList<Answer> questions;
+    private ArrayList<Integer> answers;
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) {this.id = id;}
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public ArrayList<Answer> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(ArrayList<Answer> questions) {
-        this.questions = questions;
-    }
+    public ArrayList<Integer> getAnswers() {return answers;}
+    public void setAnswers(ArrayList<Integer> answers) {this.answers = answers;}
 }
