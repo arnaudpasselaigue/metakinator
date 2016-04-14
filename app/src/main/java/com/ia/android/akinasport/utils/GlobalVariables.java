@@ -24,10 +24,6 @@ public class GlobalVariables extends Application
 
     private ModelsManager modelManager = new ModelsManager();
 
-    private ArrayList<Sport> listSports = new ArrayList<>();
-    private ArrayList<Question> listQuestions = new ArrayList<>();
-    private ArrayList<Answer> listAnswers = new ArrayList<>();
-
     private static GlobalVariables sInstance;
 
     @Override
@@ -57,9 +53,6 @@ public class GlobalVariables extends Application
     public boolean isInDevMode() {return inDevMode;}
     public void setInDevMode(boolean inDevMode) {this.inDevMode = inDevMode;}
 
-    public ArrayList<Sport> getListSports() {return listSports;}
-    public void setListSports(ArrayList<Sport> listSports) {this.listSports = listSports;}
-
     public static GlobalVariables getsInstance()
     {
         if (sInstance == null)
@@ -67,12 +60,6 @@ public class GlobalVariables extends Application
         return sInstance;
     }
     public static void setsInstance(GlobalVariables sInstance) {GlobalVariables.sInstance = sInstance;}
-
-    public ArrayList<Question> getListQuestions() {return listQuestions;}
-    public void setListQuestions(ArrayList<Question> listQuestions) {this.listQuestions = listQuestions;}
-
-    public ArrayList<Answer> getListAnswers() {return listAnswers;}
-    public void setListAnswers(ArrayList<Answer> listAnswers) {this.listAnswers = listAnswers;}
 
     public ModelsManager getModelManager() {return modelManager;}
 

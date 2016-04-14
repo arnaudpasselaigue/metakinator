@@ -5,6 +5,7 @@ import com.ia.android.akinasport.models.Question;
 import com.ia.android.akinasport.models.Sport;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Aschen on 31/03/2016.
@@ -18,6 +19,17 @@ public class ModelsManager
     public ModelsManager()
     {
 
+    }
+
+    public Answer getAnswersFromQuestionAndSport(int id_question, int id_sport)
+    {
+        for (Map.Entry<Integer, Answer> answer : m_answers.entrySet())
+        {
+            if (answer.getValue().getSport_id() == id_sport && answer.getValue().getQuestions_id() == id_question)
+                return answer.getValue();
+        }
+
+        return null;
     }
 
     public void setAnswers(HashMap<Integer, Answer> answers) {m_answers = answers;}

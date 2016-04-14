@@ -8,7 +8,7 @@ public class Answer
     private int id;
     private int sport_id;
     private int questions_id;
-    private boolean response;
+    private int response;
 
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
@@ -19,6 +19,6 @@ public class Answer
     public int getQuestions_id() {return questions_id;}
     public void setQuestions_id(int questions_id) {this.questions_id = questions_id;}
 
-    public boolean isResponse() {return response;}
-    public void setResponse(boolean response) {this.response = response;}
+    public int getResponse() {return response;}
+    public void setResponse(int response) {this.response = response;}
 }

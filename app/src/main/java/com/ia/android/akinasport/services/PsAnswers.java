@@ -60,9 +60,15 @@ public class PsAnswers extends PsAuthentification
             answer.setQuestions_id(o.getInt("question_id"));
 
             if (o.getString("answer").equals("yes"))
-                answer.setResponse(true);
-            else
-                answer.setResponse(false);
+                answer.setResponse(1);
+            else if (o.getString("answer").equals("probably_yes"))
+                answer.setResponse(2);
+            else if (o.getString("answer").equals("dont_know"))
+                answer.setResponse(3);
+            else if (o.getString("answer").equals("probably_no"))
+                answer.setResponse(4);
+            else if (o.getString("answer").equals("no"))
+                answer.setResponse(5);
 
             GlobalVariables.getsInstance().getModelManager().putAnswer(answer);
         }
