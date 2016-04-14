@@ -10,6 +10,7 @@ import java.util.Map;
 public class Sport
 {
     private int id;
+    private int score;
     private String name;
     private ArrayList<Integer> answers;
 
@@ -27,4 +28,7 @@ public class Sport
 
     public ArrayList<Integer> getAnswers() {return answers;}
     public void setAnswers(ArrayList<Integer> answers) {this.answers = answers;}
+
+    public int getScore() {return score;}
+    public void setScore(int score) {this.score = score;}
 }

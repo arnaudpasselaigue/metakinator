@@ -20,6 +20,8 @@ public class GlobalVariables extends Application
     private boolean isFirstConnexion = false;
     private boolean inDevMode = true;
 
+    private int firstQuestion;
+
     private ModelsManager modelManager = new ModelsManager();
 
     private ArrayList<Sport> listSports = new ArrayList<>();
@@ -73,5 +75,10 @@ public class GlobalVariables extends Application
     public void setListAnswers(ArrayList<Answer> listAnswers) {this.listAnswers = listAnswers;}
 
     public ModelsManager getModelManager() {return modelManager;}
+
+    public void setFirstConnexion(boolean firstConnexion) {isFirstConnexion = firstConnexion;}
+
+    public int getFirstQuestion() {return firstQuestion;}
+    public void setFirstQuestion(int firstQuestion) {this.firstQuestion = firstQuestion;}
 }
 
