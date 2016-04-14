@@ -17,8 +17,8 @@ public class ModelsManager
 
     public ModelsManager()
     {
-    }
 
+    }
 
     public void setAnswers(HashMap<Integer, Answer> answers) {m_answers = answers;}
     public HashMap<Integer, Answer> getAnswers() {return m_answers;}
