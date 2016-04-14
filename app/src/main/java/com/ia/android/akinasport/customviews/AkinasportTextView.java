@@ -31,7 +31,7 @@ public class AkinasportTextView extends TextView
     private void init(AttributeSet attrs) {
         if (attrs != null)
         {
-            Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.fontName));
+            Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.fontFuturaName));
             setTypeface(typeface);
         }
     }

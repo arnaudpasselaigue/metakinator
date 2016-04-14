@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AkinaSport</string>
     <string name="fontName">gothic_0.TTF</string>
+    <string name="fontFuturaName">Futura_T_OT_Book.ttf</string>
 </resources>
