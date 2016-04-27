@@ -58,8 +58,9 @@ public class PsQuestions extends PsAuthentification implements iQuestions
         {
             @Override
             public void onResponse(JSONObject response) {
-                try {
-                    listener.OnResponse(response.getInt("best_question"));
+                try
+                {
+                    GlobalVariables.getsInstance().setFirstQuestion(response.getInt("best_question"));
                 }
                 catch (JSONException e) {
                     e.printStackTrace();

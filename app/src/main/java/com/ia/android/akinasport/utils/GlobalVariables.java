@@ -17,10 +17,11 @@ public class GlobalVariables extends Application
 {
     private RequestQueue requestQueue;
 
-    private boolean isFirstConnexion = false;
+    private boolean isFirstConnexion = true;
     private boolean inDevMode = true;
 
     private int firstQuestion;
+    private int actualQuestion;
 
     private ModelsManager modelManager = new ModelsManager();
 
@@ -67,5 +68,8 @@ public class GlobalVariables extends Application
 
     public int getFirstQuestion() {return firstQuestion;}
     public void setFirstQuestion(int firstQuestion) {this.firstQuestion = firstQuestion;}
+
+    public int getActualQuestion() {return actualQuestion;}
+    public void setActualQuestion(int actualQuestion) {this.actualQuestion = actualQuestion;}
 }
 

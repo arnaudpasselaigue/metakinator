@@ -2,6 +2,7 @@ package com.ia.android.akinasport.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.telephony.gsm.GsmCellLocation;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,11 +10,14 @@ import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.customlisteners.OnQuestionsListener;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
 import com.ia.android.akinasport.services.PsQuestions;
+import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
 public class MainActivity extends ParentActivity
 {
     private AkinasportTextView questionTextView;
+
+    private Daneel daneel;
 
     private Button yesBtn;
     private Button probablyYesBtn;
@@ -26,6 +30,8 @@ public class MainActivity extends ParentActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        daneel = new Daneel();
 
         questionTextView = (AkinasportTextView)findViewById(R.id.textViewQuestion);
         yesBtn = (Button)findViewById(R.id.buttonYes);
@@ -49,41 +55,59 @@ public class MainActivity extends ParentActivity
 
             }
         });
-
     }
 
     public View.OnClickListener yesBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (GlobalVariables.getsInstance().isFirstConnexion())
+                daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_YES);
+            else
+                daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_YES);
 
+            //TO DO POUR TOUTES LES REPONSES
+            PsQuestions psQuestions = new PsQuestions();
+            //psQuestions.getNextQuestion();
         }
     };
 
     public View.OnClickListener probablyYesBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (GlobalVariables.getsInstance().isFirstConnexion())
+                daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_PROBABLY_YES);
+            else
+                daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_PROBABLY_YES);
         }
     };
 
     public View.OnClickListener dontKnowBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (GlobalVariables.getsInstance().isFirstConnexion())
+                daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_DONT_KNOW);
+            else
+                daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_DONT_KNOW);
         }
     };
 
     public View.OnClickListener probablyNoBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (GlobalVariables.getsInstance().isFirstConnexion())
+                daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_PROBABLY_NO);
+            else
+                daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_PROBABLY_NO);
         }
     };
 
     public View.OnClickListener noBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (GlobalVariables.getsInstance().isFirstConnexion())
+                daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_NO);
+            else
+                daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_NO);
         }
     };
 }

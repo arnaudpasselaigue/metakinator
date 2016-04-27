@@ -9,5 +9,9 @@ import com.android.volley.RequestQueue;
  */
 public class ParentActivity extends AppCompatActivity
 {
-
+    protected int ANSWER_YES = 1;
+    protected int ANSWER_PROBABLY_YES = 2;
+    protected int ANSWER_DONT_KNOW = 3;
+    protected int ANSWER_PROBABLY_NO = 4;
+    protected int ANSWER_NO = 5;
 }
