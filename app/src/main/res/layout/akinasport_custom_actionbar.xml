@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blueBaseAndroid">
+
+    <com.ia.android.akinasport.customviews.AkinasportTextViewBig
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name_actionbar"
+        android:textColor="@color/whiteColor"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

@@ -2,6 +2,8 @@ package com.ia.android.akinasport.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.telephony.gsm.GsmCellLocation;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,7 @@ public class MainActivity extends ParentActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setCustomActionBar();
 
         daneel = new Daneel();
 
@@ -58,6 +61,23 @@ public class MainActivity extends ParentActivity
                 GlobalVariables.getsInstance().setFirstConnexion(false);
             }
         });
+    }
+
+    public void setCustomActionBar()
+    {
+        ActionBar bar = getSupportActionBar();
+
+        if (bar != null) {
+            bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            bar.setDisplayShowHomeEnabled(false);
+            bar.setDisplayShowCustomEnabled(true);
+            bar.setDisplayShowTitleEnabled(false);
+            bar.setElevation(0);
+            bar.setCustomView(R.layout.akinasport_custom_actionbar);
+            View v = bar.getCustomView();
+            Toolbar parent = (Toolbar) v.getParent();
+            parent.setContentInsetsAbsolute(0, 0);
+        }
     }
 
     public View.OnClickListener yesBtnListener = new View.OnClickListener() {

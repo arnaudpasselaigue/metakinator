@@ -3,19 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.MainActivity">
 
-    <com.ia.android.akinasport.customviews.AkinasportTextView
-        android:id="@+id/textViewQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Questions to ask "
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/relativeLayoutHeader"
+        android:background="@color/blackColor">
+
+        <com.ia.android.akinasport.customviews.AkinasportTextView
+            android:id="@+id/textViewQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/whiteColor"
+            android:text="Je suis une question test ?"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutButton"
@@ -23,43 +27,52 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/textViewQuestion"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp">
+        android:layout_centerInParent="true">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonYes"
-            android:text="Oui" />
+            android:text="Oui"
+            android:theme="@style/ButtonStyle"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonProbablyYes"
             android:text="Probablement Oui"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="15dp"
+            android:theme="@style/ButtonStyle"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDontKnow"
             android:text="Je ne sais pas"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="15dp"
+            android:theme="@style/ButtonStyle"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonProbablyNo"
-            android:text="Probabablement non"
-            android:layout_marginTop="10dp" />
+            android:text="Probablement non"
+            android:layout_marginTop="15dp"
+            android:theme="@style/ButtonStyle"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonNo"
             android:text="Non"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="15dp"
+            android:theme="@style/ButtonStyle"/>
 
     </LinearLayout>
 </RelativeLayout>

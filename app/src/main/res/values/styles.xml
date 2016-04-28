@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- AkinaButton theme. -->
+    <style name="ButtonStyle" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/blueHightLightMaterial</item>
+        <item name="colorButtonNormal">@color/blueMaterial</item>
+    </style>
+
 </resources>
