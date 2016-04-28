@@ -7,11 +7,12 @@ import java.util.Map;
 /**
  * Created by Arnaud on 17/03/2016.
  */
-public class Sport
+public class Entity
 {
     private int id;
     private int score;
     private String name;
+    private String klass;
     private ArrayList<Integer> answers;
 
     public int getId() {
@@ -31,4 +32,7 @@ public class Sport
 
     public int getScore() {return score;}
     public void setScore(int score) {this.score = score;}
+
+    public String getKlass() {return klass;}
+    public void setKlass(String klass) {this.klass = klass;}
 }

@@ -4,11 +4,6 @@ import android.app.Application;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.ia.android.akinasport.models.Answer;
-import com.ia.android.akinasport.models.Question;
-import com.ia.android.akinasport.models.Sport;
-
-import java.util.ArrayList;
 
 /**
  * Created by Arnaud on 31/03/2016.
@@ -16,6 +11,8 @@ import java.util.ArrayList;
 public class GlobalVariables extends Application
 {
     private RequestQueue requestQueue;
+
+    private String klassName;
 
     private boolean isFirstConnexion = true;
     private boolean inDevMode = true;
@@ -71,5 +68,8 @@ public class GlobalVariables extends Application
 
     public int getActualQuestion() {return actualQuestion;}
     public void setActualQuestion(int actualQuestion) {this.actualQuestion = actualQuestion;}
+
+    public String getKlassName() {return klassName;}
+    public void setKlassName(String klassName) {this.klassName = klassName;}
 }
 

@@ -35,7 +35,6 @@ public class AkinasportTextView extends TextView
         {
             Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.fontFuturaName));
             setTypeface(typeface);
-            setTextSize(18);
         }
     }
 }

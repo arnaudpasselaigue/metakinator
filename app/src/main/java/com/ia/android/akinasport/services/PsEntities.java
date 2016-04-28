@@ -1,15 +1,11 @@
 package com.ia.android.akinasport.services;
 
-import android.app.DownloadManager;
 import android.util.Log;
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.ia.android.akinasport.models.Sport;
+import com.ia.android.akinasport.models.Entity;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
 import org.json.JSONArray;
@@ -21,11 +17,11 @@ import java.util.ArrayList;
 /**
  * Created by Arnaud on 31/03/2016.
  */
-public class PsSports extends PsAuthentification
+public class PsEntities extends PsAuthentification
 {
     public void getAllEntities()
     {
-        final String requestUri = uri + "/sports.json";
+        final String requestUri = uri + "/entities.json" + entity_class + GlobalVariables.getsInstance().getKlassName();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(requestUri, new Response.Listener<JSONArray>() {
             @Override
@@ -34,7 +30,7 @@ public class PsSports extends PsAuthentification
                 Log.d("getAllEntities()", response.toString());
                 try
                 {
-                    sportsFromJSON(response);
+                    entitiesFromJSON(response);
                 }
                 catch (JSONException e)
                 {
@@ -50,18 +46,19 @@ public class PsSports extends PsAuthentification
         GlobalVariables.getsInstance().getRequestQueue().add(jsonArrayRequest);
     }
 
-    public void sportsFromJSON(JSONArray response) throws JSONException
+    public void entitiesFromJSON(JSONArray response) throws JSONException
     {
         for (int i = 0; i < response.length(); i++)
         {
             JSONObject o = response.getJSONObject(i);
-            Sport sport = new Sport();
-            sport.setId(o.getInt("id"));
-            sport.setName(o.getString("name"));
+            Entity entity = new Entity();
+            entity.setId(o.getInt("id"));
+            entity.setName(o.getString("name"));
+            entity.setKlass(o.getString("klass"));
             JSONArray array = o.getJSONArray("answers");
-            sport.setAnswers(answersFromJSON(array));
+            entity.setAnswers(answersFromJSON(array));
 
-            GlobalVariables.getsInstance().getModelManager().putSport(sport);
+            GlobalVariables.getsInstance().getModelManager().putSport(entity);
         }
     }
 

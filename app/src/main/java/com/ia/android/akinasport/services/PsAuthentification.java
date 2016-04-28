@@ -8,5 +8,5 @@ import com.android.volley.RequestQueue;
 public class PsAuthentification
 {
     protected String uri = "http://aschen.ovh:8011";
-    protected String entity_sport = "?entity_class=Sport";
+    protected String entity_class = "?entity_class=";
 }

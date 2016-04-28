@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/relativeLayoutHeader"
+        android:background="@color/blackColor">
+
+        <com.ia.android.akinasport.customviews.AkinasportTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choisissez votre thème."
+            android:textColor="@color/whiteColor"
+            android:layout_centerInParent="true"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayoutHeader"
+        android:background="@color/material_grey_50"
+        android:fillViewport="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/linearLayoutCenter"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayoutHeader">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/relativeLayoutSport"
+                android:background="@drawable/metakinator_custom_choice"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <com.ia.android.akinasport.customviews.AkinasportTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sports"
+                    android:id="@+id/textViewSport"
+                    android:textColor="@color/blackColor"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageViewSport"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_sports"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/relativeLayoutSouthPark"
+                android:background="@drawable/metakinator_custom_choice"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <com.ia.android.akinasport.customviews.AkinasportTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SouthPark"
+                    android:id="@+id/textViewSouthPark"
+                    android:textColor="@color/blackColor"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:id="@+id/imageViewSouthPark"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_southpark"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

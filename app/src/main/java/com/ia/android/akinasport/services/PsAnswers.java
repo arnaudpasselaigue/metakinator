@@ -12,10 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by Arnaud on 31/03/2016.
  */
@@ -23,7 +19,7 @@ public class PsAnswers extends PsAuthentification
 {
     public void getAllAnswers()
     {
-        final String requestUri = this.uri + "/answers.json";
+        final String requestUri = this.uri + "/answers.json" + entity_class + GlobalVariables.getsInstance().getKlassName();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(requestUri, new Response.Listener<JSONArray>() {
             @Override
@@ -56,7 +52,7 @@ public class PsAnswers extends PsAuthentification
             Answer answer = new Answer();
 
             answer.setId(o.getInt("id"));
-            answer.setSport_id(o.getInt("sport_id"));
+            answer.setEntity_id(o.getInt("entity_id"));
             answer.setQuestions_id(o.getInt("question_id"));
 
             if (o.getString("answer").equals("yes"))

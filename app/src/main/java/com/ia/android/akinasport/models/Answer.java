@@ -6,15 +6,15 @@ package com.ia.android.akinasport.models;
 public class Answer
 {
     private int id;
-    private int sport_id;
+    private int entity_id;
     private int questions_id;
     private int response;
 
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
-    public int getSport_id() {return sport_id;}
-    public void setSport_id(int sport_id) {this.sport_id = sport_id;}
+    public int getEntity_id() {return entity_id;}
+    public void setEntity_id(int entity_id) {this.entity_id = entity_id;}
 
     public int getQuestions_id() {return questions_id;}
     public void setQuestions_id(int questions_id) {this.questions_id = questions_id;}

@@ -1,8 +1,8 @@
 package com.ia.android.akinasport.utils;
 
 import com.ia.android.akinasport.models.Answer;
+import com.ia.android.akinasport.models.Entity;
 import com.ia.android.akinasport.models.Question;
-import com.ia.android.akinasport.models.Sport;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,18 +14,18 @@ public class ModelsManager
 {
     private HashMap<Integer, Answer> m_answers = new HashMap<>();
     private HashMap<Integer, Question> m_questions = new HashMap<>();
-    private HashMap<Integer, Sport> m_sports = new HashMap<>();
+    private HashMap<Integer, Entity> m_entities = new HashMap<>();
 
     public ModelsManager()
     {
 
     }
 
-    public Answer getAnswersFromQuestionAndSport(int id_question, int id_sport)
+    public Answer getAnswersFromQuestionAndEntity(int id_question, int id_sport)
     {
         for (Map.Entry<Integer, Answer> answer : m_answers.entrySet())
         {
-            if (answer.getValue().getSport_id() == id_sport && answer.getValue().getQuestions_id() == id_question)
+            if (answer.getValue().getEntity_id() == id_sport && answer.getValue().getQuestions_id() == id_question)
                 return answer.getValue();
         }
 
@@ -39,14 +39,13 @@ public class ModelsManager
 
     public void setQuestions(HashMap<Integer, Question> questions) {m_questions = questions;}
     public HashMap<Integer, Question> getQuestions() {return m_questions;}
+
     public Question getQuestion(Integer id) {return m_questions.get(id);}
     public void putQuestion(Question question) {m_questions.put(question.getId(), question);}
 
-    public void setSports(HashMap<Integer, Sport> sports) {m_sports = sports;}
-    public HashMap<Integer, Sport> getSports() {return m_sports;}
-    public Sport getSport(Integer id) {return m_sports.get(id);}
-    public void putSport(Sport sport)
+    public HashMap<Integer, Entity> getSports() {return m_entities;}
+    public void putSport(Entity entity)
     {
-        m_sports.put(sport.getId(), sport);
+        m_entities.put(entity.getId(), entity);
     }
 }

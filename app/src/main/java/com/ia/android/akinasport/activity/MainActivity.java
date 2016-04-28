@@ -2,8 +2,6 @@ package com.ia.android.akinasport.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,7 +10,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.customlisteners.OnQuestionsListener;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
-import com.ia.android.akinasport.models.Sport;
+import com.ia.android.akinasport.models.Entity;
 import com.ia.android.akinasport.services.PsQuestions;
 import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
@@ -150,9 +148,9 @@ public class MainActivity extends ParentActivity
 
     public void actualWinner()
     {
-        HashMap<Integer, Sport> m_sports = GlobalVariables.getsInstance().getModelManager().getSports();
+        HashMap<Integer, Entity> m_sports = GlobalVariables.getsInstance().getModelManager().getSports();
 
-        for (Map.Entry<Integer, Sport> sport : m_sports.entrySet())
+        for (Map.Entry<Integer, Entity> sport : m_sports.entrySet())
         {
             if (sport.getValue().getScore() > 15)
             {

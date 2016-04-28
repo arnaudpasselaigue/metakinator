@@ -23,6 +23,10 @@
             android:theme="@style/AppTheme"/>
 
         <activity
+            android:name=".activity.ChoiceActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity
             android:name=".activity.ParentActivity"
             android:theme="@style/AppTheme"/>
 

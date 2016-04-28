@@ -25,7 +25,7 @@ public class PsQuestions extends PsAuthentification implements iQuestions
 {
     public void getAllQuestions()
     {
-        final String requestUri = this.uri + "/questions.json";
+        final String requestUri = this.uri + "/questions.json" + this.entity_class + GlobalVariables.getsInstance().getKlassName();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(requestUri, new Response.Listener<JSONArray>() {
             @Override
@@ -52,7 +52,7 @@ public class PsQuestions extends PsAuthentification implements iQuestions
 
     public void getFirstQuestion(final OnQuestionsListener listener)
     {
-        String uri = this.uri + "/questions/first_question";
+        String uri = this.uri + "/questions/first_question" + this.entity_class + GlobalVariables.getsInstance().getKlassName();
 
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, uri, null, new Response.Listener<JSONObject>()
         {
@@ -79,7 +79,7 @@ public class PsQuestions extends PsAuthentification implements iQuestions
 
     public void getNextQuestion(ArrayList<Integer> id_questions, final OnQuestionsListener listener)
     {
-        String uri = this.uri + "/questions/best_question";
+        String uri = this.uri + "/questions/best_question" + entity_class + GlobalVariables.getsInstance().getKlassName();
         JSONObject jsonBody = new JSONObject();
 
         try {
