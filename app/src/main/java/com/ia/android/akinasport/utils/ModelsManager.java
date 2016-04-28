@@ -45,5 +45,8 @@ public class ModelsManager
     public void setSports(HashMap<Integer, Sport> sports) {m_sports = sports;}
     public HashMap<Integer, Sport> getSports() {return m_sports;}
     public Sport getSport(Integer id) {return m_sports.get(id);}
-    public void putSport(Sport sport) {m_sports.put(sport.getId(), sport);}
+    public void putSport(Sport sport)
+    {
+        m_sports.put(sport.getId(), sport);
+    }
 }

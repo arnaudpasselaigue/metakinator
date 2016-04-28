@@ -3,10 +3,15 @@ package com.ia.android.akinasport.activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
+import com.ia.android.akinasport.customviews.AkinasportTextView;
+import com.ia.android.akinasport.customviews.AkinasportTextViewBig;
 import com.ia.android.akinasport.models.Sport;
 import com.ia.android.akinasport.services.PsAnswers;
 import com.ia.android.akinasport.services.PsQuestions;
@@ -20,11 +25,20 @@ import java.util.ArrayList;
  */
 public class LoaderActivity extends ParentActivity
 {
+    private AkinasportTextViewBig textViewLoader;
+    private ImageView imageViewLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loader);
+
+        imageViewLoader = (ImageView) findViewById(R.id.imageViewIconLoader);
+        YoYo.with(Techniques.ZoomIn).duration(1500).playOn(imageViewLoader);
+
+        textViewLoader = (AkinasportTextViewBig) findViewById(R.id.textViewNameLoader);
+        YoYo.with(Techniques.ZoomIn).duration(1500).playOn(textViewLoader);
 
         DataDownloadTask dlTask = new DataDownloadTask();
         dlTask.execute();

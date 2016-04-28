@@ -19,6 +19,10 @@
             android:theme="@style/AppTheme"/>
 
         <activity
+            android:name=".activity.FinalActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity
             android:name=".activity.ParentActivity"
             android:theme="@style/AppTheme"/>
 

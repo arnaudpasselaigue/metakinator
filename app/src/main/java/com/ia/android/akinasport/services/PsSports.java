@@ -25,7 +25,7 @@ public class PsSports extends PsAuthentification
 {
     public void getAllEntities()
     {
-        final String requestUri = this.getUri() + "/sports.json";
+        final String requestUri = uri + "/sports.json";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(requestUri, new Response.Listener<JSONArray>() {
             @Override

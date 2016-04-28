@@ -1,5 +1,6 @@
 package com.ia.android.akinasport.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -11,9 +12,13 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.customlisteners.OnQuestionsListener;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
+import com.ia.android.akinasport.models.Sport;
 import com.ia.android.akinasport.services.PsQuestions;
 import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends ParentActivity
 {
@@ -64,23 +69,6 @@ public class MainActivity extends ParentActivity
                 YoYo.with(Techniques.DropOut).duration(1000).playOn(findViewById(R.id.textViewQuestion));
             }
         });
-    }
-
-    public void setCustomActionBar()
-    {
-        ActionBar bar = getSupportActionBar();
-
-        if (bar != null) {
-            bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            bar.setDisplayShowHomeEnabled(false);
-            bar.setDisplayShowCustomEnabled(true);
-            bar.setDisplayShowTitleEnabled(false);
-            bar.setElevation(0);
-            bar.setCustomView(R.layout.akinasport_custom_actionbar);
-            View v = bar.getCustomView();
-            Toolbar parent = (Toolbar) v.getParent();
-            parent.setContentInsetsAbsolute(0, 0);
-        }
     }
 
     public View.OnClickListener yesBtnListener = new View.OnClickListener() {
@@ -154,7 +142,27 @@ public class MainActivity extends ParentActivity
                 questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
                 questionTextView.setVisibility(View.VISIBLE);
                 YoYo.with(Techniques.DropOut).duration(1000).playOn(findViewById(R.id.textViewQuestion));
+
+                actualWinner();
             }
         });
+    }
+
+    public void actualWinner()
+    {
+        HashMap<Integer, Sport> m_sports = GlobalVariables.getsInstance().getModelManager().getSports();
+
+        for (Map.Entry<Integer, Sport> sport : m_sports.entrySet())
+        {
+            if (sport.getValue().getScore() > 15)
+            {
+                Intent final_activity = new Intent(getApplicationContext(), FinalActivity.class);
+                final_activity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                final_activity.putExtra("WinnerEntity", sport.getValue().getName());
+                finish();
+                startActivity(final_activity);
+                break;
+            }
+        }
     }
 }

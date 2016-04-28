@@ -23,7 +23,7 @@ public class PsAnswers extends PsAuthentification
 {
     public void getAllAnswers()
     {
-        final String requestUri = this.getUri() + "/answers.json";
+        final String requestUri = this.uri + "/answers.json";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(requestUri, new Response.Listener<JSONArray>() {
             @Override
