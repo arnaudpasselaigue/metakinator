@@ -54,12 +54,14 @@ public class PsQuestions extends PsAuthentification implements iQuestions
     {
         String uri = this.getUri() + "/questions/first_question";
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, uri, null, new Response.Listener<JSONObject>()
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, uri, null, new Response.Listener<JSONObject>()
         {
             @Override
             public void onResponse(JSONObject response) {
                 try
                 {
+                    int bestQust = response.getInt("best_question");
+                    listener.OnResponse(bestQust);
                     GlobalVariables.getsInstance().setFirstQuestion(response.getInt("best_question"));
                 }
                 catch (JSONException e) {
@@ -75,13 +77,18 @@ public class PsQuestions extends PsAuthentification implements iQuestions
         GlobalVariables.getsInstance().getRequestQueue().add(request);
     }
 
-    public void getNextQuestion(int[] id_questions, final OnQuestionsListener listener)
+    public void getNextQuestion(ArrayList<Integer> id_questions, final OnQuestionsListener listener)
     {
         String uri = this.getUri() + "/questions/best_question";
         JSONObject jsonBody = new JSONObject();
 
-        try {
-            jsonBody.put("questions_id", id_questions);
+        try
+        {
+            int[] id_array = new int[id_questions.size()];
+            for (int i = 0; i < id_questions.size(); i ++)
+                id_array[i] = id_questions.get(i).intValue();
+
+            jsonBody.put("questions_id", new JSONArray(id_questions));
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -91,7 +98,8 @@ public class PsQuestions extends PsAuthentification implements iQuestions
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    listener.OnResponse(response.getInt("best_question"));
+                    int bestQust = response.getInt("best_question");
+                    listener.OnResponse(bestQust);
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -100,7 +108,7 @@ public class PsQuestions extends PsAuthentification implements iQuestions
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                error.printStackTrace();
             }
         });
         GlobalVariables.getsInstance().getRequestQueue().add(request);

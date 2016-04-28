@@ -2,6 +2,8 @@ package com.ia.android.akinasport.customviews;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.renderscript.BaseObj;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -32,7 +34,9 @@ public class AkinasportTextView extends TextView
         if (attrs != null)
         {
             Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.fontFuturaName));
-            setTypeface(typeface);
+            setTypeface(typeface, Typeface.BOLD);
+            setTextSize(16);
+            setTextColor(getResources().getColor(R.color.blackColor));
         }
     }
 }

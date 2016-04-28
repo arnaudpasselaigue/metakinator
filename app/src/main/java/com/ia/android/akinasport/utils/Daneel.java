@@ -1,10 +1,13 @@
 package com.ia.android.akinasport.utils;
 
+import android.graphics.AvoidXfermode;
 import android.util.Pair;
 
+import com.ia.android.akinasport.customlisteners.OnQuestionsListener;
 import com.ia.android.akinasport.models.Answer;
 import com.ia.android.akinasport.models.Question;
 import com.ia.android.akinasport.models.Sport;
+import com.ia.android.akinasport.services.PsQuestions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,8 +18,8 @@ import java.util.Map;
  */
 public class Daneel
 {
-    private ArrayList<Pair<Question, Integer>> questionsAnswers;
-    private ArrayList<Integer> questionsAlreadyAsked;
+    private ArrayList<Pair<Question, Integer>> questionsAnswers = new ArrayList<>();
+    private ArrayList<Integer> questionsAlreadyAsked = new ArrayList<>();
 
     private int[][] scoreMatrice =
             {
@@ -41,7 +44,8 @@ public class Daneel
         {
             Answer correctAnswer = GlobalVariables.getsInstance().getModelManager().getAnswersFromQuestionAndSport(questionId, sport.getValue().getId());
 
-            int score = scoreMatrice[correctAnswer.getResponse()][userAnswer];
+            int correctAns = correctAnswer.getResponse() - 1;
+            int score = scoreMatrice[correctAns][userAnswer - 1];
             sport.getValue().setScore(sport.getValue().getScore() + score);
         }
 

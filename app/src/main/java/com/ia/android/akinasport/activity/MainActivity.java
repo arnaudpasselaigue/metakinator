@@ -12,6 +12,7 @@ import com.ia.android.akinasport.customviews.AkinasportTextView;
 import com.ia.android.akinasport.services.PsQuestions;
 import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
+import com.ia.android.akinasport.utils.ModelsManager;
 
 public class MainActivity extends ParentActivity
 {
@@ -52,7 +53,9 @@ public class MainActivity extends ParentActivity
             @Override
             public void OnResponse(int id) {
                 GlobalVariables.getsInstance().setFirstQuestion(id);
-
+                GlobalVariables.getsInstance().setActualQuestion(id);
+                questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
+                GlobalVariables.getsInstance().setFirstConnexion(false);
             }
         });
     }
@@ -65,9 +68,7 @@ public class MainActivity extends ParentActivity
             else
                 daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_YES);
 
-            //TO DO POUR TOUTES LES REPONSES
-            PsQuestions psQuestions = new PsQuestions();
-            //psQuestions.getNextQuestion();
+            getNextQuestion();
         }
     };
 
@@ -78,6 +79,8 @@ public class MainActivity extends ParentActivity
                 daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_PROBABLY_YES);
             else
                 daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_PROBABLY_YES);
+
+            getNextQuestion();
         }
     };
 
@@ -88,6 +91,8 @@ public class MainActivity extends ParentActivity
                 daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_DONT_KNOW);
             else
                 daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_DONT_KNOW);
+
+            getNextQuestion();
         }
     };
 
@@ -98,6 +103,8 @@ public class MainActivity extends ParentActivity
                 daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_PROBABLY_NO);
             else
                 daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_PROBABLY_NO);
+
+            getNextQuestion();
         }
     };
 
@@ -108,6 +115,20 @@ public class MainActivity extends ParentActivity
                 daneel.applyScore(GlobalVariables.getsInstance().getFirstQuestion(), ANSWER_NO);
             else
                 daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_NO);
+
+            getNextQuestion();
         }
     };
+
+    public void getNextQuestion()
+    {
+        PsQuestions psQuestions = new PsQuestions();
+        psQuestions.getNextQuestion(daneel.getQuestionsAlreadyAsked(), new OnQuestionsListener() {
+            @Override
+            public void OnResponse(int id) {
+                GlobalVariables.getsInstance().setActualQuestion(id);
+                questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
+            }
+        });
+    }
 }

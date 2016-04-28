@@ -13,7 +13,7 @@
         android:id="@+id/textViewQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Est ce un sport qui ce joue en salle ?"
+        android:text="Questions to ask "
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
 
