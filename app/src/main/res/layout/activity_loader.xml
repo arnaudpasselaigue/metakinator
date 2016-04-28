@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whiteColor">
+    android:background="@color/blueBaseAndroid">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -13,8 +13,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_genius"
-            android:id="@+id/imageViewIconLoader"/>
+            android:src="@drawable/ic_genius_white"
+            android:id="@+id/imageViewIconLoader"
+            android:layout_centerHorizontal="true" />
 
         <com.ia.android.akinasport.customviews.AkinasportTextViewBig
             android:layout_width="wrap_content"
@@ -23,8 +24,8 @@
             android:id="@+id/textViewNameLoader"
             android:layout_below="@+id/imageViewIconLoader"
             android:layout_centerHorizontal="true"
-            android:textSize="19sp"
+            android:textSize="25sp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/blackColor" />
+            android:textColor="@color/whiteColor" />
     </RelativeLayout>
 </RelativeLayout>

@@ -33,7 +33,6 @@ public class AkinasportTextViewBig extends TextView
         {
             Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.fontLemonMilkName));
             setTypeface(typeface);
-            setTextSize(18);
         }
     }
 }

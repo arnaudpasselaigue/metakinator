@@ -1,20 +1,19 @@
 package com.ia.android.akinasport.activity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.telephony.gsm.GsmCellLocation;
 import android.view.View;
 import android.widget.Button;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.customlisteners.OnQuestionsListener;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
 import com.ia.android.akinasport.services.PsQuestions;
 import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
-import com.ia.android.akinasport.utils.ModelsManager;
 
 public class MainActivity extends ParentActivity
 {
@@ -57,8 +56,12 @@ public class MainActivity extends ParentActivity
             public void OnResponse(int id) {
                 GlobalVariables.getsInstance().setFirstQuestion(id);
                 GlobalVariables.getsInstance().setActualQuestion(id);
-                questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
                 GlobalVariables.getsInstance().setFirstConnexion(false);
+
+                questionTextView.setVisibility(View.INVISIBLE);
+                questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
+                questionTextView.setVisibility(View.VISIBLE);
+                YoYo.with(Techniques.DropOut).duration(1000).playOn(findViewById(R.id.textViewQuestion));
             }
         });
     }
@@ -147,7 +150,10 @@ public class MainActivity extends ParentActivity
             @Override
             public void OnResponse(int id) {
                 GlobalVariables.getsInstance().setActualQuestion(id);
+                questionTextView.setVisibility(View.INVISIBLE);
                 questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
+                questionTextView.setVisibility(View.VISIBLE);
+                YoYo.with(Techniques.DropOut).duration(1000).playOn(findViewById(R.id.textViewQuestion));
             }
         });
     }

@@ -35,4 +35,7 @@ dependencies {
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.pushtorefresh.storio:sqlite:1.8.0'
     compile 'com.github.lopspower:CircularFillableLoaders:9dd44b4f62'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.easing:library:1.0.1@aar'
+    compile 'com.daimajia.androidanimations:library:1.1.3@aar'
 }
