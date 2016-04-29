@@ -1,5 +1,6 @@
 package com.ia.android.akinasport.utils;
 
+import android.util.Log;
 import android.util.Pair;
 
 import com.ia.android.akinasport.models.Answer;
@@ -43,6 +44,11 @@ public class Daneel
 
             int correctAns = correctAnswer.getResponse() - 1;
             int score = scoreMatrice[correctAns][userAnswer - 1];
+            if (entity.getValue().getName().equals("Basketball"))
+            {
+                Log.i("CorrectAnswer", String.valueOf(correctAns));
+                Log.i("UserAnswer", String.valueOf(userAnswer));
+            }
             entity.getValue().setScore(entity.getValue().getScore() + score);
         }
 

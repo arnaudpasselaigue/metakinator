@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
 import com.ia.android.akinasport.customviews.AkinasportTextViewBig;
@@ -15,6 +17,7 @@ import com.ia.android.akinasport.customviews.AkinasportTextViewBig;
 public class FinalActivity extends ParentActivity
 {
     private Button replayButton;
+    private Button switchThemeButton;
     private AkinasportTextView questionsWinnerTextView;
 
     @Override
@@ -27,6 +30,9 @@ public class FinalActivity extends ParentActivity
         replayButton = (Button) findViewById(R.id.buttonReplay);
         replayButton.setOnClickListener(replayListener);
 
+        switchThemeButton = (Button) findViewById(R.id.buttonSwitchTheme);
+        switchThemeButton.setOnClickListener(switchThemeListener);
+
         questionsWinnerTextView = (AkinasportTextView) findViewById(R.id.textViewWinnerQuestion);
 
         String winner;
@@ -37,7 +43,9 @@ public class FinalActivity extends ParentActivity
         else
             winner = "Un problème est survenue.";
 
+
         questionsWinnerTextView.setText(winner);
+        YoYo.with(Techniques.Landing).duration(1500).playOn(questionsWinnerTextView);
     }
 
     public View.OnClickListener replayListener = new View.OnClickListener() {
@@ -48,6 +56,17 @@ public class FinalActivity extends ParentActivity
             main.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             finish();
             startActivity(main);
+        }
+    };
+
+    public View.OnClickListener switchThemeListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v)
+        {
+            Intent choice = new Intent(getApplicationContext(), ChoiceActivity.class);
+            choice.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            finish();
+            startActivity(choice);
         }
     };
 }

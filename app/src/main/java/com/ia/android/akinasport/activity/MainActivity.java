@@ -64,7 +64,7 @@ public class MainActivity extends ParentActivity
                 questionTextView.setVisibility(View.INVISIBLE);
                 questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
                 questionTextView.setVisibility(View.VISIBLE);
-                YoYo.with(Techniques.DropOut).duration(1000).playOn(findViewById(R.id.textViewQuestion));
+                YoYo.with(Techniques.FadeInDown).duration(1000).playOn(findViewById(R.id.textViewQuestion));
             }
         });
     }
@@ -139,7 +139,7 @@ public class MainActivity extends ParentActivity
                 questionTextView.setVisibility(View.INVISIBLE);
                 questionTextView.setText(GlobalVariables.getsInstance().getModelManager().getQuestions().get(id).getTitle() + " ?");
                 questionTextView.setVisibility(View.VISIBLE);
-                YoYo.with(Techniques.DropOut).duration(1000).playOn(findViewById(R.id.textViewQuestion));
+                YoYo.with(Techniques.FadeInDown).duration(1000).playOn(findViewById(R.id.textViewQuestion));
 
                 actualWinner();
             }

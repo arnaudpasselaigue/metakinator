@@ -50,7 +50,7 @@
                     android:id="@+id/textViewSport"
                     android:textColor="@color/blackColor"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -78,7 +78,7 @@
                     android:id="@+id/textViewSouthPark"
                     android:textColor="@color/blackColor"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:textSize="18sp" />
 
                 <ImageView

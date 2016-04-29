@@ -28,10 +28,10 @@ public class LoaderActivity extends ParentActivity
         setContentView(R.layout.activity_loader);
 
         imageViewLoader = (ImageView) findViewById(R.id.imageViewIconLoader);
-        YoYo.with(Techniques.ZoomIn).duration(1500).playOn(imageViewLoader);
+        YoYo.with(Techniques.BounceIn).duration(1500).playOn(imageViewLoader);
 
         textViewLoader = (AkinasportTextViewBig) findViewById(R.id.textViewNameLoader);
-        YoYo.with(Techniques.ZoomIn).duration(1500).playOn(textViewLoader);
+        YoYo.with(Techniques.BounceInUp).duration(1500).playOn(textViewLoader);
 
         WaitingTask dlTask = new WaitingTask();
         dlTask.execute();

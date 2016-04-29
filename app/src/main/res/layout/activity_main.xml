@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    android:background="@drawable/ic_flat_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,14 +31,14 @@
         android:layout_centerInParent="true">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonYes"
             android:text="Oui"
             android:theme="@style/ButtonStyle"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonProbablyYes"
             android:text="Probablement Oui"
@@ -47,7 +48,7 @@
             android:paddingRight="15dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonDontKnow"
             android:text="Je ne sais pas"
@@ -67,7 +68,7 @@
             android:paddingLeft="15dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonNo"
             android:text="Non"
