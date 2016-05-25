@@ -2,14 +2,20 @@ package com.ia.android.akinasport.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.telephony.gsm.GsmCellLocation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.activity.FinalActivity;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
+import com.ia.android.akinasport.utils.GlobalVariables;
+import com.pnikosis.materialishprogress.ProgressWheel;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 /**
@@ -22,6 +28,8 @@ public class WhichSportFragment extends Fragment
     private AkinasportTextView textViewQuestion;
     private MaterialEditText editText;
     private Button buttonValidate;
+
+    private ProgressWheel progressWheel;
 
     public static final WhichSportFragment newInstance(FinalActivity activity)
     {
@@ -50,5 +58,29 @@ public class WhichSportFragment extends Fragment
         textViewQuestion = (AkinasportTextView)view.findViewById(R.id.textView);
         editText = (MaterialEditText)view.findViewById(R.id.editText);
         buttonValidate = (Button)view.findViewById(R.id.buttonValidate);
+        buttonValidate.setOnClickListener(validateBtnListener);
+
+        progressWheel = (ProgressWheel)view.findViewById(R.id.progressWheel);
+        progressWheel.setBarColor(R.color.whiteColor);
     }
+
+    public View.OnClickListener validateBtnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v)
+        {
+            if (editText.getText() != null && !editText.getText().toString().equals(""))
+            {
+                progressWheel.setVisibility(View.VISIBLE);
+                progressWheel.spin();
+
+                
+            }
+            else
+            {
+                YoYo.with(Techniques.Shake).duration(500).playOn(editText);
+                editText.setErrorColor(R.color.blueMaterial);
+                editText.setError("Veuillez rentrer un " + GlobalVariables.getsInstance().getKlassName() + " valide.");
+            }
+        }
+    };
 }

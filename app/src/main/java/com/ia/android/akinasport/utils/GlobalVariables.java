@@ -24,6 +24,8 @@ public class GlobalVariables extends Application
 
     private static GlobalVariables sInstance;
 
+    private Daneel daneelForLearning;
+
     @Override
     public void onCreate()
     {
@@ -71,5 +73,8 @@ public class GlobalVariables extends Application
 
     public String getKlassName() {return klassName;}
     public void setKlassName(String klassName) {this.klassName = klassName;}
+
+    public Daneel getDaneelForLearning() {return daneelForLearning;}
+    public void setDaneelForLearning(Daneel daneelForLearning) {this.daneelForLearning = daneelForLearning;}
 }
 

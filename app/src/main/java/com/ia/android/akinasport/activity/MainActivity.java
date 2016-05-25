@@ -157,6 +157,7 @@ public class MainActivity extends ParentActivity
                 Intent final_activity = new Intent(getApplicationContext(), FinalActivity.class);
                 final_activity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 final_activity.putExtra("WinnerEntity", sport.getValue().getName());
+                GlobalVariables.getsInstance().setDaneelForLearning(daneel);
                 finish();
                 startActivity(final_activity);
                 break;

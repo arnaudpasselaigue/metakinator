@@ -53,6 +53,19 @@ public class FinalActivity extends ParentActivity
         initFragmentsAndViewPager();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        if (viewPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous step.
+            viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
+        }
+    }
+
     public void initFragmentsAndViewPager()
     {
         listFragments.add(KnowOrDontKnowFragment.newInstance(this));
@@ -62,7 +75,28 @@ public class FinalActivity extends ParentActivity
         viewPager.setAdapter(pagerAdapter);
         viewPager.setSaveEnabled(false);
         viewPager.setCurrentItem(pagerAdapter.getCount());
+        viewPager.setOnPageChangeListener(viewPagerListener);
     }
+
+    public ViewPager.OnPageChangeListener viewPagerListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position)
+        {
+            if (position < pagerAdapter.getCount() - 1)
+                pagerAdapter.removeView(position + 1);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state)
+        {
+
+        }
+    };
 
     public ArrayList<Fragment> getListFragments() {return listFragments;}
     public void setListFragments(ArrayList<Fragment> listFragments) {this.listFragments = listFragments;}

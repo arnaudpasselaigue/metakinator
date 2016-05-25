@@ -5,8 +5,9 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_height="200dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/relativeLayoutCenter">
 
         <com.ia.android.akinasport.customviews.AkinasportTextView
             android:layout_width="wrap_content"
@@ -35,6 +36,14 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:text="Valider"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="40dp" />
     </RelativeLayout>
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:id="@+id/progressWheel"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/relativeLayoutCenter"
+        android:visibility="invisible" />
 </RelativeLayout>
