@@ -2,23 +2,32 @@ package com.ia.android.akinasport.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
+import com.ia.android.akinasport.customadapter.AkinasportPagerAdapter;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
 import com.ia.android.akinasport.customviews.AkinasportTextViewBig;
+import com.ia.android.akinasport.fragments.KnowOrDontKnowFragment;
+
+import java.util.ArrayList;
 
 /**
  * Created by Arnaud on 28/04/2016.
  */
 public class FinalActivity extends ParentActivity
 {
-    private Button replayButton;
-    private Button switchThemeButton;
     private AkinasportTextView questionsWinnerTextView;
+
+    private ViewPager viewPager;
+    private AkinasportPagerAdapter pagerAdapter;
+    private ArrayList<Fragment> listFragments = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,13 +36,8 @@ public class FinalActivity extends ParentActivity
         setContentView(R.layout.activity_final);
         setCustomActionBar();
 
-        replayButton = (Button) findViewById(R.id.buttonReplay);
-        replayButton.setOnClickListener(replayListener);
-
-        switchThemeButton = (Button) findViewById(R.id.buttonSwitchTheme);
-        switchThemeButton.setOnClickListener(switchThemeListener);
-
         questionsWinnerTextView = (AkinasportTextView) findViewById(R.id.textViewWinnerQuestion);
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
 
         String winner;
         Bundle extras = getIntent().getExtras();
@@ -43,30 +47,29 @@ public class FinalActivity extends ParentActivity
         else
             winner = "Un problème est survenue.";
 
-
-        questionsWinnerTextView.setText(winner);
+        questionsWinnerTextView.setText(winner + " ?");
         YoYo.with(Techniques.Landing).duration(1500).playOn(questionsWinnerTextView);
+
+        initFragmentsAndViewPager();
     }
 
-    public View.OnClickListener replayListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v)
-        {
-            Intent main = new Intent(getApplicationContext(), MainActivity.class);
-            main.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            finish();
-            startActivity(main);
-        }
-    };
+    public void initFragmentsAndViewPager()
+    {
+        listFragments.add(KnowOrDontKnowFragment.newInstance(this));
 
-    public View.OnClickListener switchThemeListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v)
-        {
-            Intent choice = new Intent(getApplicationContext(), ChoiceActivity.class);
-            choice.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            finish();
-            startActivity(choice);
-        }
-    };
+        pagerAdapter = new AkinasportPagerAdapter(getSupportFragmentManager(), listFragments);
+        pagerAdapter.notifyDataSetChanged();
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setSaveEnabled(false);
+        viewPager.setCurrentItem(pagerAdapter.getCount());
+    }
+
+    public ArrayList<Fragment> getListFragments() {return listFragments;}
+    public void setListFragments(ArrayList<Fragment> listFragments) {this.listFragments = listFragments;}
+
+    public ViewPager getViewPager() {return viewPager;}
+    public void setViewPager(ViewPager viewPager) {this.viewPager = viewPager;}
+
+    public AkinasportPagerAdapter getPagerAdapter() {return pagerAdapter;}
+    public void setPagerAdapter(AkinasportPagerAdapter pagerAdapter) {this.pagerAdapter = pagerAdapter;}
 }

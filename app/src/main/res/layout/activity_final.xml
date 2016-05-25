@@ -19,35 +19,13 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relativeLayoutCenter"
-        android:layout_below="@+id/relativeLayoutHeader"
-        android:background="@drawable/ic_flat_cactus_background">
+        android:id="@+id/viewPager"
+        android:layout_below="@+id/relativeLayoutHeader">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ButtonStyle"
-            android:text="Rejouez"
-            android:id="@+id/buttonReplay"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ButtonStyle"
-            android:text="Changez de thème"
-            android:id="@+id/buttonSwitchTheme"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:layout_below="@+id/buttonReplay" />
-
-    </RelativeLayout>
+    </android.support.v4.view.ViewPager>
 
 </RelativeLayout>
