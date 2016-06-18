@@ -13,7 +13,9 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.ia.android.akinasport.R;
 import com.ia.android.akinasport.activity.FinalActivity;
+import com.ia.android.akinasport.customlisteners.OnEntitiesListener;
 import com.ia.android.akinasport.customviews.AkinasportTextView;
+import com.ia.android.akinasport.services.PsEntities;
 import com.ia.android.akinasport.utils.GlobalVariables;
 import com.pnikosis.materialishprogress.ProgressWheel;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -70,17 +72,33 @@ public class WhichSportFragment extends Fragment
         {
             if (editText.getText() != null && !editText.getText().toString().equals(""))
             {
-                progressWheel.setVisibility(View.VISIBLE);
-                progressWheel.spin();
+                PsEntities psEntities = new PsEntities();
 
-                
+                psEntities.getIfEntityAlreadyExist(editText.getText().toString(), entitiesListener);
             }
             else
             {
                 YoYo.with(Techniques.Shake).duration(500).playOn(editText);
-                editText.setErrorColor(R.color.blueMaterial);
-                editText.setError("Veuillez rentrer un " + GlobalVariables.getsInstance().getKlassName() + " valide.");
+                editText.setError("Veuillez rentrer un " + GlobalVariables.getsInstance().getKlassName() + ".");
             }
+        }
+    };
+
+    public OnEntitiesListener entitiesListener = new OnEntitiesListener() {
+        @Override
+        public void OnResponse(String entity) {
+            if (entity != null)
+            {
+                finalActivity.getPagerAdapter().addFragmentAtLast(DoYouThinkFragment.newInstance(finalActivity, entity, editText.getText().toString()));
+                finalActivity.getViewPager().setCurrentItem(finalActivity.getPagerAdapter().getCount());
+            }
+            else
+                editText.setError("Veuillez rentrer un " + GlobalVariables.getsInstance().getKlassName() + " valide.");
+        }
+
+        @Override
+        public void OnResponse(boolean success) {
+
         }
     };
 }

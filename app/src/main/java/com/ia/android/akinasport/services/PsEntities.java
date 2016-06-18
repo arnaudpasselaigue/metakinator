@@ -2,10 +2,14 @@ package com.ia.android.akinasport.services;
 
 import android.util.Log;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.ia.android.akinasport.customlisteners.OnEntitiesListener;
 import com.ia.android.akinasport.models.Entity;
+import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
 import org.json.JSONArray;
@@ -72,5 +76,70 @@ public class PsEntities extends PsAuthentification
         }
 
         return answers;
+    }
+
+    public void getIfEntityAlreadyExist(String entity, final OnEntitiesListener listener)
+    {
+        final String requestUri = uri + "/entities/fuzzy_match.json" + entity_class + GlobalVariables.getsInstance().getKlassName();
+
+        JSONObject jsonBody = new JSONObject();
+
+        try {
+            jsonBody.put("name", entity);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestUri, jsonBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.has("best_match"))
+                        listener.OnResponse(response.getString("best_match"));
+                    else
+                        listener.OnResponse(null);
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        GlobalVariables.getsInstance().getRequestQueue().add(request);
+    }
+
+    public void sendEntity(Daneel daneel, String entity, final OnEntitiesListener listener)
+    {
+        final String requestUri = uri + "/entities/add_entity.json" + entity_class + GlobalVariables.getsInstance().getKlassName();
+
+        JSONObject jsonBody = new JSONObject();
+
+        try {
+            jsonBody.put("entity_name", entity);
+            jsonBody.put("questions", new JSONArray(daneel.getQuestionsAnswers()));
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestUri, jsonBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                    listener.OnResponse(true);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        GlobalVariables.getsInstance().getRequestQueue().add(request);
+
+
     }
 }

@@ -30,7 +30,7 @@ public class Daneel
 
     public Daneel()
     {
-
+        
     }
 
     public void applyScore(int questionId, int userAnswer)
@@ -59,7 +59,9 @@ public class Daneel
     public int[][] getScoreMatrice() {return scoreMatrice;}
     public void setScoreMatrice(int[][] scoreMatrice) {this.scoreMatrice = scoreMatrice;}
 
-    public ArrayList<Pair<Question, Integer>> getQuestionsAnswers() {return questionsAnswers;}
+    public ArrayList<Pair<Question, Integer>> getQuestionsAnswers() {
+
+        return questionsAnswers;}
     public void setQuestionsAnswers(ArrayList<Pair<Question, Integer>> questionsAnswers) {this.questionsAnswers = questionsAnswers;}
 
     public ArrayList<Integer> getQuestionsAlreadyAsked() {return questionsAlreadyAsked;}

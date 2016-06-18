@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/ic_flat_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <com.ia.android.akinasport.customviews.AkinasportTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDoYouThink"
+            android:textColor="@color/blackColor"
+            android:text="Pensez vous à "
+            android:textSize="18sp"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonYes"
+            android:theme="@style/ButtonStyle"
+            android:layout_below="@+id/textViewDoYouThink"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Oui"
+            android:layout_marginTop="40dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonNo"
+            android:theme="@style/ButtonStyle"
+            android:layout_below="@+id/buttonYes"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Non"
+            android:layout_marginTop="40dp" />
+
+    </RelativeLayout>
+</RelativeLayout>
