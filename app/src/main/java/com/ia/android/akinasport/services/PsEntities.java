@@ -1,6 +1,7 @@
 package com.ia.android.akinasport.services;
 
 import android.util.Log;
+import android.util.Pair;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -9,6 +10,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.ia.android.akinasport.customlisteners.OnEntitiesListener;
 import com.ia.android.akinasport.models.Entity;
+import com.ia.android.akinasport.models.Question;
 import com.ia.android.akinasport.utils.Daneel;
 import com.ia.android.akinasport.utils.GlobalVariables;
 
@@ -121,13 +123,27 @@ public class PsEntities extends PsAuthentification
 
         try {
             jsonBody.put("entity_name", entity);
-            jsonBody.put("questions", new JSONArray(daneel.getQuestionsAnswers()));
+            ArrayList<Pair<Question, Integer>> test = daneel.getQuestionsAnswers();
+            String jsonOut = "[";
+            for (Pair pair : test) {
+
+                Question question = (Question)pair.first;
+                Integer idAnswers = (Integer)pair.second;
+
+                jsonOut += "{\"id\":" + question.getId() + ",\"answer\":" + idAnswers + "},";
+            }
+
+            jsonOut = jsonOut.substring(0, jsonOut.length() - 1);
+            jsonOut += "]";
+
+            jsonBody.put("questions", jsonOut);
         }
         catch (JSONException e) {
             e.printStackTrace();
         }
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestUri, jsonBody, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, requestUri, jsonBody, new Response.Listener<JSONObject>()
+        {
             @Override
             public void onResponse(JSONObject response) {
                     listener.OnResponse(true);

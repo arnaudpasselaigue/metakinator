@@ -7,6 +7,6 @@ import com.android.volley.RequestQueue;
  */
 public class PsAuthentification
 {
-    protected String uri = "http://aschen.ovh:8011";
+    protected String uri = "http://metakinator.aschen.ovh:80";
     protected String entity_class = "?entity_class=";
 }

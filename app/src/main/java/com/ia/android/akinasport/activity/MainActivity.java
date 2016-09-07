@@ -77,6 +77,7 @@ public class MainActivity extends ParentActivity
             else
                 daneel.applyScore(GlobalVariables.getsInstance().getActualQuestion(), ANSWER_YES);
 
+
             getNextQuestion();
         }
     };
@@ -131,6 +132,8 @@ public class MainActivity extends ParentActivity
 
     public void getNextQuestion()
     {
+        statesButtons(false);
+
         PsQuestions psQuestions = new PsQuestions();
         psQuestions.getNextQuestion(daneel.getQuestionsAlreadyAsked(), new OnQuestionsListener() {
             @Override
@@ -141,6 +144,7 @@ public class MainActivity extends ParentActivity
                 questionTextView.setVisibility(View.VISIBLE);
                 YoYo.with(Techniques.FadeInDown).duration(1000).playOn(findViewById(R.id.textViewQuestion));
 
+                statesButtons(true);
                 actualWinner();
             }
         });
@@ -163,5 +167,14 @@ public class MainActivity extends ParentActivity
                 break;
             }
         }
+    }
+
+    public void statesButtons(boolean value)
+    {
+        yesBtn.setClickable(value);
+        probablyYesBtn.setClickable(value);
+        dontKnowBtn.setClickable(value);
+        probablyNoBtn.setClickable(value);
+        noBtn.setClickable(value);
     }
 }

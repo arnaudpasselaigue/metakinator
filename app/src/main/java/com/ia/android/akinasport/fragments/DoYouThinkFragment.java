@@ -69,6 +69,8 @@ public class DoYouThinkFragment extends Fragment
     public View.OnClickListener btnYesListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Toast.makeText(getContext(), entity + " a bien été mis à jour avec la base de conaissance. Merci de votre participation.", Toast.LENGTH_SHORT).show();
+
             finalActivity.getPagerAdapter().addFragmentAtLast(ReplayFragment.newInstance(finalActivity));
             finalActivity.getViewPager().setCurrentItem(finalActivity.getPagerAdapter().getCount());
         }
@@ -77,11 +79,8 @@ public class DoYouThinkFragment extends Fragment
     public View.OnClickListener btnNoListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
             PsEntities psEntities = new PsEntities();
             psEntities.sendEntity(GlobalVariables.getsInstance().getDaneelForLearning(), oldEntity, entitiesListener);
-
-            Toast.makeText(getContext(), entity + " a bien été ajouté à la base de conaissance. Merci de votre participation.", Toast.LENGTH_SHORT).show();
 
             finalActivity.getPagerAdapter().addFragmentAtLast(ReplayFragment.newInstance(finalActivity));
             finalActivity.getViewPager().setCurrentItem(finalActivity.getPagerAdapter().getCount());
